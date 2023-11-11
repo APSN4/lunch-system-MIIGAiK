@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -29,8 +30,9 @@ public class Category {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "products")
-    private ArrayList<String> products;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "products_id")
+    private List<Product> products;
 
     @Column(name = "is_visible")
     private Boolean isVisible;

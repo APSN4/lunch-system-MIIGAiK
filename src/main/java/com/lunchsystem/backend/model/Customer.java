@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -14,7 +15,7 @@ public class Customer {
 
     public Customer() {}
 
-    public Customer(ArrayList<Integer> products, Integer sumMoney) {
+    public Customer(ArrayList<Product> products, Integer sumMoney) {
         this.products = products;
         this.sumMoney = sumMoney;
         this.orderNumber = new OrderNumberGenerator().generateFourDigits();
@@ -27,8 +28,9 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "products")
-    private ArrayList<Integer> products;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "products_id")
+    private List<Product> products;
 
     @Column(name = "sum_money")
     private Integer sumMoney;

@@ -12,8 +12,8 @@ public class Product {
 
     public Product() {}
 
-    public Product(Integer id_category, String title, String description, Integer sumMoney) {
-        this.id_category = id_category;
+    public Product(Category category_id, String title, String description, Integer sumMoney) {
+        this.category_id = category_id;
         this.title = title;
         this.description = description;
         this.sumMoney = sumMoney;
@@ -27,8 +27,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "id_category")
-    private Integer id_category;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
+    private Category category_id;
 
     @Column(name = "title")
     private String title;
