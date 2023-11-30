@@ -1,6 +1,7 @@
 package com.lunchsystem.backend.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -16,7 +17,6 @@ public class Category {
 
     public Category(String title) {
         this.title = title;
-        this.products = new ArrayList<>();
         this.isVisible = true;
         this.isClickable = true;
         this.createdAt = LocalDateTime.now();

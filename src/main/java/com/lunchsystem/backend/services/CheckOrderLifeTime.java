@@ -17,7 +17,7 @@ public class CheckOrderLifeTime implements Runnable{
         try {
             while (true) {
                 System.out.println(LocalDateTime.now());
-                Thread.sleep(1000);
+                Thread.sleep(3600 * 1000);
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
